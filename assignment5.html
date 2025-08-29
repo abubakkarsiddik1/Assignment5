@@ -185,6 +185,35 @@ navigator.clipboard.writeText(number);
           document.getElementById("copyCount").innerText = copyCount;
         });
       });
+
+      // Call Button
+
+      document.querySelectorAll(".callBtn").forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          const name = btn.dataset.name;
+          const number = btn.dataset.number;
+          if(coins < 20){
+            alert("Not enough coins!");
+            return;
+          }
+
+          coins -= 20;
+          document.getElementById("coinCount").innerText = coins;
+
+        alert(`Callin ${name} at ${name}`);
+
+        const time = new Date().toLocaleTimeString();
+        const li = document.createElement("li");
+        li.textContent = `${name} (${number}) - ${time}`;
+
+        document.getElementById("historyList").appendChild(li);
+        });
+      });
+
+      document.getElementById("clearHistory").addEventListener("click", ()=>{
+        document.getElementById("historyList").innerHTML = "";
+      });
+    </script>
 </body>
 </html>
 
