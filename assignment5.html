@@ -149,6 +149,42 @@
           <button class="callBtn bg-green-500 text-white px-3 py-1 rounded " data-name="Travel" data-number="163">📞  Call</button>
         </div>
        </div>
+
+       <!-- History Section -->
+        <div class="bg-white shadow rounded-xl p-4">
+          <div class="flex justify-between items-center">
+            <h2 class="font-bold">Call History</h2>
+            <button id="clearHistory" class="text-sm text-red-600">Clear</button>
+          </div>
+          <ul id="historyList" class="mt-4 space-y-2 text-sm"></ul>
+        </div>
+    </main>  
+    
+      <script>
+      let heartCount = 0;
+      let copyCount = 0;
+      let coins = 100; 
+
+      // Heart Button
+
+      document.querySelectorAll(".heartBtn").forEach(btn=>{
+        btn.addEventListener("click", ()=> {
+          heartCount++;
+          document.getElementById("heartCount").innerText = heartCount; btn.textContent = "❤️"
+        });
+      });
+
+      // Copy Button
+
+      document.querySelectorAll(".copyBtn").forEach(btn=>{
+        btn.addEventListener("click", (e)=>{
+          const number = btn.parentElement.parentElement.querySelector("p.text-gray-600").innerText;
+navigator.clipboard.writeText(number);
+          alert("Copied: " + number);
+          copyCount++
+          document.getElementById("copyCount").innerText = copyCount;
+        });
+      });
 </body>
 </html>
 
